@@ -1,0 +1,135 @@
+
+<div class="mudole-container">
+  <div class="form-container">
+    <div class="form-header">
+      <button
+        mat-icon-button
+        routerLinkActive="router-link-active"
+      >
+      </button>
+      <span>
+  
+      </span>
+    </div>
+    <!-- begin form -->
+    <div class="form-content">
+      <form
+        class="form"
+        id="postform"
+        [formGroup]="addAlbumFG"
+        (ngSubmit)="onSubmit()"
+        autocomplete="off"
+      >
+        <mat-form-field appearance="outline">
+          <mat-label>Name </mat-label>
+          <input required formControlName="name" matInput />
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label></mat-label>
+          <mat-icon matSuffix>image</mat-icon>
+          <ngx-mat-file-input
+            appearance="outline"
+            type="file"
+            formControlName="albumPoster"
+          >
+          </ngx-mat-file-input>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label></mat-label>
+          <mat-icon matSuffix>image</mat-icon>
+          <ngx-mat-file-input
+            appearance="outline"
+            type="file"
+            formControlName="albumeProfile"
+          >
+          </ngx-mat-file-input>
+        </mat-form-field>
+
+        <div
+          formArrayName="tracks"
+          class="tracks"
+          *ngFor="
+            let project of addAlbumFG.get('tracks')['controls'];
+            let i = index
+          "
+        >
+          <div class="closeDiv">
+            <mat-icon
+              (click)="removeTracks(i)"
+              aria-hidden="false"
+              aria-label="Example home icon"
+              >close</mat-icon
+            >
+          </div>
+          <ng-container [formGroupName]="i">
+            <div class="lang-form">
+              <!-- isCorrect -->
+              <div class="trackInfo">
+                <mat-form-field appearance="outline">
+                  <mat-label></mat-label>
+                  <input formControlName="trackNumber" type="number" matInput />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label></mat-label>
+                  <input formControlName="trackName" matInput />
+                </mat-form-field>
+              </div>
+
+              <mat-form-field appearance="outline">
+                <mat-label></mat-label>
+                <mat-icon matSuffix>image</mat-icon>
+                <ngx-mat-file-input
+                  appearance="outline"
+                  type="file"
+                  formControlName="trackProfile"
+                >
+                </ngx-mat-file-input>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label></mat-label>
+                <mat-icon matSuffix>image</mat-icon>
+                <ngx-mat-file-input
+                  appearance="outline"
+                  type="file"
+                  formControlName="trackPoster"
+                >
+                </ngx-mat-file-input>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label></mat-label>
+                <mat-icon matSuffix>image</mat-icon>
+                <ngx-mat-file-input
+                  appearance="outline"
+                  type="file"
+                  formControlName="trackFile"
+                >
+                </ngx-mat-file-input>
+              </mat-form-field>
+            </div>
+          </ng-container>
+        </div>
+        <div  class="addTrack">
+          <span (click)="addTracks()"> From Array </span>
+        </div>
+      </form>
+    </div>
+
+    <div class="form-footer">
+      <button
+        form="postform"
+        type="submit"
+        [disabled]="!addAlbumFG.valid"
+        color="primary"
+      >
+    Send To Server
+      </button>
+    </div>
+    <!-- end form -->
+  </div>
+</div>

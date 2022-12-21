@@ -1,0 +1,23 @@
+p {
+  font-family: Lato;
+}
+
+input{
+  height: 30px;
+}
+ngx-mat-file-input{
+    height: 30px;
+}
+
+.tracks{
+  background-color: gray;
+}
+
+.addTrack{
+    width: 100%;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
